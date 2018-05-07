@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import PanelA from 'Components/panelA';
-import PanelB from 'Components/panelB';
-import Header from 'Components/header';
+import Header from 'Components/Header';
+import Content from 'Components/Content';
+import Panel from 'Components/Panel';
 import simulateDataCall from 'utility/parseMock';
 import mockData from 'assets/mockData.json';
-
+import '../../styles/normalize.css';
 simulateDataCall(mockData)
-  .then((response) => {console.log('JSON DATA:', response)});
 
 class App extends Component {
   constructor(props) {
@@ -18,8 +17,10 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <PanelA />
-        <PanelB />
+        <Content>
+          <Panel />
+          <Panel />
+        </Content>
       </div>
     );
   }

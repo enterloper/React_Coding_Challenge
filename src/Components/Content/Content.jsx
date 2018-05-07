@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import './styles.less';
 
 class Content extends Component {
 
   render() {
     return (
-      <div>
-        {props.children}
+      <div className="content__wrapper">
+        {this.props.children}
       </div>
     );
   }

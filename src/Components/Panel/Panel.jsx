@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
+import './styles.less';
 
-class PanelA extends Component {
+class Panel extends Component {
     constructor(props) {
         super(props);
     };
 
     render() {
         return ( 
-        <div className="panels float-left">
+        <div className="panel__wrapper">
             <span>I AM Panel A!!!!</span>
         </div>
     );
     }
 }
 
-export default PanelA;
+export default Panel;

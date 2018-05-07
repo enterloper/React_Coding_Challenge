@@ -1,32 +1,61 @@
+const path = require("path");
+const HtmlWebpackPlugin =  require("html-webpack-plugin");
+const HtmlPlugin = new HtmlWebpackPlugin({
+  template: './src/index.html',
+  filename: './index.html',
+});
+
 module.exports = {
-  entry: [
-    './src/index.js'
-  ],
+  mode: "development",
+  devtool: "source-map",
+  target: "web",
+  entry: "./src/index.jsx",
   output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "src"
   },
   module: {
-    loaders: [
+    rules: [
       {
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-1']
-        }
+        use: {
+          loader: "babel-loader",
+        },
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader',
-      }
-    ]
+        test: /\.(css|less)$/,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
+    modules: ["node_modules", "src", "Components"],
+    extensions: [".js", ".jsx", ".json"],
+    alias: {
+      react: path.resolve(__dirname, "node_modules", "react")
+    },
   },
+  plugins: [HtmlPlugin],
   devServer: {
-    historyApiFallback: true,
-    contentBase: './'
+    compress: true,
+    contentBase: path.join(__dirname, 'dist'),
   }
 };
