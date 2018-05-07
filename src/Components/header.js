@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PanelA from './panelA';
-
 class Header extends Component {
     state = {
       showMinus: true,
