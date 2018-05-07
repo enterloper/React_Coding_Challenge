@@ -1,0 +1,1 @@
+import mockData from 'assets/mockData';
