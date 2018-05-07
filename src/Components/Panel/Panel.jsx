@@ -9,7 +9,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  content: "Loading...",
   showPanelInfo: false,
 };
 

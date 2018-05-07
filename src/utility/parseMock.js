@@ -1,6 +1,6 @@
 function simulateDataCall(mockData) {
   return new Promise((resolve, reject) => {
-    setTimeout(resolve, 200, mockData);
+    setTimeout(resolve, 1000, mockData);
   });
 }
 

@@ -10,11 +10,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      revenue: '',
-      percentage1: '',
-      percentage2: '',
-      contentA: '',
-      contentB: '',
+      revenue: null,
+      percentage1: null,
+      percentage2: null,
+      contentA: 'Loading Panel A Data...',
+      contentB: null,
       showContent: true,
       showPanelB: false,
     };
@@ -22,6 +22,7 @@ class App extends Component {
     this.toggleContentVisibility = this.toggleContentVisibility.bind(this);
     this.togglePanels = this.togglePanels.bind(this);
   }
+
   componentDidMount() {
     simulateDataCall(mockData)
       .then((response) => {

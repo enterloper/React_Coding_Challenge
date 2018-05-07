@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.less';
 
@@ -22,7 +22,7 @@ const Header = (props) => {
   return (
     <section className="header__wrapper">
       <div>{percentage1}</div>
-      <div>{revenue}</div>
+      <div>{revenue ? revenue : 'Loading data...'}</div>
       <div>{percentage2}</div>
       <div className="header__button-cell" onClick={toggleContentVisibility}>
         <button>
