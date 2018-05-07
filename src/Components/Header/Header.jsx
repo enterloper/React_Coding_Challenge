@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './styles.less';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showMinus: true,
-    };
-    this.changeSign = this.changeSign.bind(this);
-  }
-    changeSign() {
-        this.setState({ showMinus: !this.state.showMinus });
-    }
+const propTypes = {
+  toggleContentVisibility: PropTypes.func.isRequired,
+  percentage1: PropTypes.string,
+  percentage2: PropTypes.string,
+  revenue: PropTypes.string,
+  showContent: PropTypes.bool.isRequired,
+};
 
-    render() {
-        return (
-        <div className="header__wrapper">
-            <div>30%</div>
-            <div>$200000</div>
-            <div>85%</div>
-            <div className="header__button-cell" onClick={this.changeSign}>
-              <button>
-                {this.state.showMinus ? '-' : '+'}
-              </button>
-            </div>
-        </div>
-    );
-    }
-}
+const Header = (props) => {
+  const {
+    toggleContentVisibility,
+    percentage1,
+    percentage2,
+    revenue,
+    showContent,
+  } = props;
 
+  return (
+    <section className="header__wrapper">
+      <div>{percentage1}</div>
+      <div>{revenue}</div>
+      <div>{percentage2}</div>
+      <div className="header__button-cell" onClick={toggleContentVisibility}>
+        <button>
+          {showContent ? '-' : '+'}
+        </button>
+      </div>
+    </section>
+  );
+};
+
+Header.propTypes = propTypes;
 export default Header;

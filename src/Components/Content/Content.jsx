@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import './styles.less';
 
-class Content extends Component {
+const Content = (props) => {
+  const determineContentVisibility = (toggle) => {
+    return toggle
+      ? "content__wrapper"
+      : "content__wrapper content__wrapper-no-show"
+  };
 
-  render() {
-    return (
-      <div className="content__wrapper">
-        {this.props.children}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={determineContentVisibility(props.showContent)}>
+      {props.children}
+    </div>
+  );
+};
 
 export default Content;
