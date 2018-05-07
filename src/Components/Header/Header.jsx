@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PanelA from './panelA';
+import PanelA from '../PanelA/PanelA';
+
 class Header extends Component {
     state = {
       showMinus: true,
@@ -15,9 +16,7 @@ class Header extends Component {
             <div>30%</div>
             <div>$200000</div>
             <div>85%</div>
-            {this.state.showMinus ? <span className="plusOrMinus" onClick={this.changeSign}> - </span>
-                :
-            <span className="plusOrMinus" onClick={this.changeSign}> + </span>}
+            <span className="plusOrMinus" onClick={this.changeSign}> {this.state.showMinus ? '-' : '+'} </span>
         </div>
     );
     }
