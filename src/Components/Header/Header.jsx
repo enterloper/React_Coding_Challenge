@@ -4,9 +4,9 @@ import './styles.less';
 
 const propTypes = {
   toggleContentVisibility: PropTypes.func.isRequired,
-  percentage1: PropTypes.string,
-  percentage2: PropTypes.string,
-  revenue: PropTypes.string,
+  percentage1: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  percentage2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.string,
   showContent: PropTypes.bool.isRequired,
 };
 
@@ -15,15 +15,21 @@ const Header = (props) => {
     toggleContentVisibility,
     percentage1,
     percentage2,
-    revenue,
+    title,
     showContent,
   } = props;
 
   return (
     <section className="header__wrapper">
-      <div>{percentage1}</div>
-      <div>{revenue ? revenue : 'Loading data...'}</div>
-      <div>{percentage2}</div>
+      <div className="header__content header__content--percentage">
+	      {percentage1}
+      </div>
+      <div className="header__content header__content--title">
+	      {title ? title : 'Loading data...'}
+      </div>
+      <div className="header__content header__content--percentage">
+	      {percentage2}
+      </div>
       <div className="header__button-cell">
         <button onClick={toggleContentVisibility}>
           {showContent ? '-' : '+'}

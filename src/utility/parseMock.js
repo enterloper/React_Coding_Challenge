@@ -1,7 +1,25 @@
-function simulateDataCall(mockData) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, 1000, mockData);
-  });
+function makeUserDataCall() {
+  return fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => {
+    	return response.json();
+    })
+	  .catch(err => {
+	  	throw Error('Something went wrong!');
+	  	console.error(err);
+	  });
+}
+function makeTitleCall() {
+  return fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
+    .then(response => {
+    	return response.json();
+    })
+	  .catch(err => {
+	  	throw Error('Something went wrong!');
+	  	console.error(err);
+	  });
 }
 
-export default simulateDataCall;
+export default {
+	makeUserDataCall,
+	makeTitleCall,
+};

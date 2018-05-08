@@ -16,6 +16,19 @@
     }
   }
 
+  &__content {
+    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+    &--title {
+      font-size: 1.2rem;
+    }
+    &--percentage {
+      font-size: 2.4rem;
+      &:after {
+        content: '%';
+      }
+    }
+  }
+
   &__button-cell {
     > button {
       cursor: pointer;

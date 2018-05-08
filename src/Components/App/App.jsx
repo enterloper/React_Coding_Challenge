@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import Header from 'Components/Header';
 import Content from 'Components/Content';
 import Panel from 'Components/Panel';
-import simulateDataCall from 'utility/parseMock';
-import mockData from 'assets/mockData.js';
+import dataCalls from 'utility/parseMock';
 import '../../styles/normalize.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      revenue: null,
+      title: null,
       percentage1: null,
       percentage2: null,
-      contentA: 'Loading Panel A Data...',
-      contentB: null,
+      contentA: [],
+      contentB: [],
       showContent: true,
       showPanelB: false,
     };
@@ -25,18 +24,33 @@ class App extends Component {
   }
 
   componentDidMount() {
-    simulateDataCall(mockData)
+    const { makeUserDataCall, makeTitleCall } = dataCalls;
+    let contentA;
+    let contentB;
+	  let title;
+	  let percentage1;
+    let percentage2;
+	  makeUserDataCall()
       .then((response) => {
-        const parsedMock = JSON.parse(response);
-        const { headerData, contentA, contentB } = parsedMock;
-        this.setState({
-          revenue: headerData[1],
-          percentage1: headerData[0],
-          percentage2: headerData[2],
-          contentA,
-          contentB,
+        const userArray = response;
+        contentA = userArray.filter((el, index) => (index % 2 === 0));
+        contentB = userArray.filter((el, index) => (index % 2 !== 0));
+      })
+      .then(makeTitleCall()
+        .then((response) => {
+      	  const data = response[5];
+          title = data.title;
+          percentage1 = data.userId;
+          percentage2 = data.id;
+	        this.setState(() => ({
+		        contentA,
+		        contentB,
+		        title,
+		        percentage1,
+		        percentage2,
+	        }));
         })
-      });
+      );
   }
 
   toggleContentVisibility() {
@@ -49,7 +63,7 @@ class App extends Component {
 
   render() {
     const {
-      revenue,
+      title,
       percentage1,
       percentage2,
       contentA,
@@ -61,7 +75,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header
-          revenue={revenue}
+          title={title}
           percentage1={percentage1}
           percentage2={percentage2}
           toggleContentVisibility={this.toggleContentVisibility}
