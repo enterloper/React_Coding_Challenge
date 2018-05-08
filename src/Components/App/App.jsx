@@ -21,6 +21,7 @@ class App extends Component {
 
     this.toggleContentVisibility = this.toggleContentVisibility.bind(this);
     this.togglePanels = this.togglePanels.bind(this);
+
   }
 
   componentDidMount() {
@@ -58,7 +59,7 @@ class App extends Component {
     } = this.state;
 
     return (
-      <div>
+      <React.Fragment>
         <Header
           revenue={revenue}
           percentage1={percentage1}
@@ -78,7 +79,7 @@ class App extends Component {
             togglePanels={this.togglePanels}
           />
         </Content>
-      </div>
+      </React.Fragment>
     );
   }
 }

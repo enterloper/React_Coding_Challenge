@@ -1,5 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.less';
+
+const propTypes = {
+  showContent: PropTypes.bool,
+};
+
+const defaultProps = {
+  showContent: true,
+};
 
 const Content = (props) => {
   const determineContentVisibility = (toggle) => {
@@ -15,4 +24,6 @@ const Content = (props) => {
   );
 };
 
+Content.propTypes = propTypes;
+Content.defaultProps = defaultProps;
 export default Content;

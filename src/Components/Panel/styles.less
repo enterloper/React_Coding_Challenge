@@ -1,20 +1,24 @@
-.panel__wrapper {
-  width: 50%;
-  height: 40rem;
-  background-color: #EEEEEE;
-  padding: 1rem;
-  transition: background-color .4s;
-  > span {
-    opacity: 1;
-    transition: opacity .4s;
-  }
-  &--no-show {
+.panel {
+  &__wrapper {
+    width: 50%;
+    height: 40rem;
     background-color: #FFFFFF;
-    opacity: 0;
-    transition: opacity .4s, background-color .4s;
-    > span {
+    padding: 1rem;
+    transition: background-color .4s ease-out;
+
+
+    &--no-show {
+      background-color: #EEEEEE;
+      transition: background-color .4s ease-in;
+    }
+  }
+
+  &__content {
+    opacity: 1;
+    transition: opacity .2s ease-out;
+    &--no-show {
+      transition: opacity .2s ease-in;
       opacity: 0;
-      transition: opacity .4s;
     }
   }
 }

@@ -13,16 +13,18 @@ const defaultProps = {
 };
 
 const Panel = ({ content, showPanelInfo, togglePanels }) => {
-  const determineClass = (toggle) => {
-    return toggle ? "panel__wrapper" : "panel__wrapper panel__wrapper--no-show"
+  const determineClass = (toggle, subName) => {
+    return toggle ? `panel__${subName}` : `panel__${subName} panel__${subName}--no-show`;
   };
 
   return (
     <div
       onClick={togglePanels}
-      className={determineClass(showPanelInfo)}
+      className={determineClass(showPanelInfo, 'wrapper')}
     >
-      <span>{content}</span>
+      <span className={determineClass(showPanelInfo, 'content')}>
+        {content}
+      </span>
     </div>
   );
 };

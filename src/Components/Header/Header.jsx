@@ -24,8 +24,8 @@ const Header = (props) => {
       <div>{percentage1}</div>
       <div>{revenue ? revenue : 'Loading data...'}</div>
       <div>{percentage2}</div>
-      <div className="header__button-cell" onClick={toggleContentVisibility}>
-        <button>
+      <div className="header__button-cell">
+        <button onClick={toggleContentVisibility}>
           {showContent ? '-' : '+'}
         </button>
       </div>
